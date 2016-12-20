@@ -33,13 +33,27 @@
             <a-light id='flicker-light' type='point' color='orange' intensity='2' decay='4' distance='10' position='0 -0.5 1'>
                 <a-animation
                     from='2'
-                    to='2.2'
+                    to='2.3'
                     dur=200
                     direction='alternate'
                     repeat='indefinite'
                     attribute='intensity'>
                 </a-animation>
             </a-light>
+
+            <!-- A second light glowing outside the fireplace animating at a different interval
+                 to create the illusion of random flickering -->
+            <a-light id='flicker-light-2' type='point' color='orange' intensity='2' decay='2' distance='10' position='0 -0.5 1'>
+                <a-animation
+                    from='0.5'
+                    to='1'
+                    dur=1250
+                    direction='alternate'
+                    repeat='indefinite'
+                    attribute='intensity'>
+                </a-animation>
+            </a-light>
+
             <!-- Fireplace -->
             <a-obj-model mixin='stone-material' src='#fireplace-obj' scale='0.001 0.001 0.001' position='0 0.4 -0.5'></a-obj-model>
 
