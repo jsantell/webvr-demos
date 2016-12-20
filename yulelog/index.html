@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Yule Log VR</title>
+    <meta name="description" content="Yule Log VR"></meta>
+    <script src='../vendor/aframe.min.js'></script>
+  </head>
+
+  <body>
+    <a-scene>
+        <a-assets>
+            <img id='wood' src='assets/oldwood-diffuse.png' />
+            <img id='wood-normal' src='assets/oldwood-normal.png' />
+            <img id='stone' src='assets/stone-diffuse.png' />
+            <img id='stone-normal' src='assets/stone-normal.png' />
+            <a-asset-item id='fireplace-obj' src='assets/fireplace.obj' />
+            <a-mixin id='wall' scale='2 2 2' material='src: #wood; normalMap: #wood-normal; roughness: 1; metalness: 0, normalScale: 2 2' />
+            <a-mixin id='stone-material' material='src: #stone; normalMap: #stone-normal; roughness: 1; metalness: 0, normalScale: 0.5 0.5' />
+        </a-assets>
+        <a-camera position='0 -1 2'>
+            <a-cursor></a-cursor>
+        </a-camera>
+
+        <!-- Fireplace -->
+        <a-entity position='0 -1 -1.5'>
+            <!-- Light inside the fireplace -->
+            <a-light type='point' color='orange' intensity='3' decay='4' distance='10' position='0 -0.5 0'></a-light>
+            <!-- Light glowing outside the fireplace -->
+            <a-light type='point' color='orange' intensity='2' decay='4' distance='10' position='0 -0.5 1'></a-light>
+            <!-- Fireplace -->
+            <a-obj-model mixin='stone-material' src='#fireplace-obj' scale='0.001 0.001 0.001' position='0 0.4 -0.5'></a-obj-model>
+        </a-entity>
+
+        <!-- Room -->
+        <a-entity position='0 0 0' scale='2 2 2'>
+            <a-plane mixin='wall' position='-1 0 0' rotation='0 90 0'></a-plane>
+            <a-plane mixin='wall' position='0 0 1' rotation='0 180 180'></a-plane>
+            <a-plane mixin='wall' position='1 0 0' rotation='0 270 0'></a-plane>
+            <a-plane mixin='wall' position='0 0 -1' rotation='0 0 0'></a-plane>
+            <a-plane mixin='wall' position='0 1 0' rotation='90 0 0'></a-plane>
+            <a-plane mixin='wall' position='0 -1 0' rotation='270 0 0'></a-plane>
+        </a-entity>
+    </a-scene>
+  </body>
+</html>
