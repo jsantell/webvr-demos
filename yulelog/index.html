@@ -26,7 +26,16 @@
             <!-- Light inside the fireplace -->
             <a-light type='point' color='orange' intensity='3' decay='4' distance='10' position='0 -0.5 0'></a-light>
             <!-- Light glowing outside the fireplace -->
-            <a-light type='point' color='orange' intensity='2' decay='4' distance='10' position='0 -0.5 1'></a-light>
+            <a-light id='flicker-light' type='point' color='orange' intensity='2' decay='4' distance='10' position='0 -0.5 1'>
+                <a-animation
+                    from='2'
+                    to='2.2'
+                    dur=200
+                    direction='alternate'
+                    repeat='indefinite'
+                    attribute='intensity'>
+                </a-animation>
+            </a-light>
             <!-- Fireplace -->
             <a-obj-model mixin='stone-material' src='#fireplace-obj' scale='0.001 0.001 0.001' position='0 0.4 -0.5'></a-obj-model>
         </a-entity>
