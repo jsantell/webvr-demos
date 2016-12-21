@@ -4,6 +4,7 @@
     <title>Yule Log VR</title>
     <meta name="description" content="Yule Log VR"></meta>
     <script src='../vendor/aframe.min.js'></script>
+    <script src='../vendor/aframe-particle-system-component.min.js'></script>
   </head>
 
   <body>
@@ -15,6 +16,7 @@
             <img id='stone-normal' src='assets/stone-normal-256.png' />
             <img id='bark' src='assets/bark-diffuse-256.png' />
             <img id='bark-normal' src='assets/bark-normal-256.png' />
+            <img id='flame-texture' src='assets/particle.png' />
             <a-asset-item id='fireplace-obj' src='assets/fireplace.obj' />
             <a-asset-item id='log-obj' src='assets/log.obj' />
             <a-mixin id='wall' scale='2 2 2' material='src: #wood; normalMap: #wood-normal; roughness: 1; metalness: 0, normalScale: 2 2' />
@@ -28,7 +30,7 @@
         <!-- Fireplace -->
         <a-entity position='0 -1 -1.5'>
             <!-- Light inside the fireplace -->
-            <a-light type='point' color='orange' intensity='3' decay='4' distance='10' position='0 -0.5 0'></a-light>
+            <a-light type='point' color='orange' intensity='1' decay='4' distance='3' position='0 -0.5 0'></a-light>
             <!-- Light glowing outside the fireplace -->
             <a-light id='flicker-light' type='point' color='orange' intensity='2' decay='4' distance='10' position='0 -0.5 1'>
                 <a-animation
@@ -57,9 +59,28 @@
             <!-- Fireplace -->
             <a-obj-model mixin='stone-material' src='#fireplace-obj' scale='0.001 0.001 0.001' position='0 0.4 -0.5'></a-obj-model>
 
-            <!-- Logs -->
-            <a-entity position='-0.3 -0.68 -0.4'>
-                <a-obj-model mixin='log-mixin' src='#log-obj' position='0 -0.05 0' rotation='-66 156 101'></a-obj-model>
+            <!-- Fire -->
+            <!-- Note we must use non zero values in all vec3's otherwise defaults kick in,
+                 so use very low values if we want to 'zero' something
+                 https://github.com/IdeaSpaceVR/aframe-particle-system-component/issues/13 -->
+            <a-entity id='fire'
+                position='0 -0.7 -0.2'
+                scale='0.7 0.1 0.1'
+                particle-system='texture: #flame-texture;
+                color: #ccccff,#ff1100,#ffff00,#ffff00,#ff0000,#ff0000;
+                positionSpread: 1 2 3;
+                velocityValue: 0.1 2 0.01;
+                velocitySpread: 1 10 0.01;
+                accelerationValue: 0.1 5 0.1;
+                accelerationSpread: 0.1 5 1;
+                maxAge: 0.5;
+                size: 0.2;
+                particleCount: 3000;
+                opacity: 0.1'>
+            </a-entity>
+
+            <a-entity position='-0.3 -0.68 -0.3'>
+                <a-obj-model mixin='log-mixin' src='#log-obj' position='0 -0.05 0.11' rotation='-66 156 101'></a-obj-model>
                 <a-obj-model mixin='log-mixin' src='#log-obj' position='0.06 0.04 0' rotation='-60 168 125'></a-obj-model>
                 <a-obj-model mixin='log-mixin' src='#log-obj' position='0.3 0.1 -0.1' rotation='-66 87 141'></a-obj-model>
             </a-entity>
