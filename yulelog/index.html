@@ -27,7 +27,9 @@
             <a-mixin id='tree-mixin' rotation='-90 0 0' material='color: #007700; roughness: 1; metalness: 0;' scale='0.02 0.02 0.02'>
             <a-mixin id='wall' scale='2 2 2' material='src: #wood; normalMap: #wood-normal; roughness: 1; metalness: 0, normalScale: 2 2' />
             <a-mixin id='stone-material' material='src: #stone; normalMap: #stone-normal; roughness: 1; metalness: 0, normalScale: 0.5 0.5' />
-            <a-mixin id='log-mixin' scale='0.015 0.015 0.015' material='src: #bark; normalMap: #bark-normal; roughness: 1; metalness: 0, normalScale: 1 1' />
+            <a-mixin id='log-mixin'
+                geometry='segmentsHeight: 1; segmentsRadial: 10'
+                scale='0.08 0.8 0.08' material='src: #bark; normalMap: #bark-normal; roughness: 1; metalness: 0, normalScale: 1 1' />
         </a-assets>
         <a-camera wasd-controls-enabled='false' position='0 -2 2'>
             <a-cursor></a-cursor>
@@ -107,23 +109,23 @@
             </a-entity>
 
             <!-- Logs -->
-            <a-entity position='-0.3 -0.68 -0.3'>
-                <a-obj-model mixin='log-mixin' src='#log-obj' position='0 -0.05 0.11' rotation='-66 156 101'></a-obj-model>
-                <a-obj-model mixin='log-mixin' src='#log-obj' position='0.06 0.04 0' rotation='-60 168 125'></a-obj-model>
-                <a-obj-model mixin='log-mixin' src='#log-obj' position='0.3 0.1 -0.1' rotation='-66 87 141'></a-obj-model>
+            <a-entity position='0.08 -0.58 -0.27' scale='0.8 0.8 0.8'>
+                <a-cylinder mixin='log-mixin' position='0 -0.05 0.11' rotation='-66 156 101'></a-cylinder>
+                <a-cylinder mixin='log-mixin' position='0.12 0.04 0' rotation='-58 142 130'></a-cylinder>
+                <a-cylinder mixin='log-mixin' position='-0.4 -0.1 -.15' rotation='-80 80 72' scale='0.06 0.6 0.06'></a-cylinder>
             </a-entity>
         </a-entity>
 
         <!-- Extra Logs in Corner -->
-        <a-entity position='1.70 -1.89 -1.94' rotation='0 -148 0'>
-            <a-obj-model mixin='log-mixin' src='#log-obj' position='0 -0.05 0' rotation='-66 156 101'></a-obj-model>
-            <a-obj-model mixin='log-mixin' src='#log-obj' position='0.06 0.04 0' rotation='-60 168 125'></a-obj-model>
-            <a-obj-model mixin='log-mixin' src='#log-obj' position='0.3 0.1 -0.1' rotation='-66 87 141'></a-obj-model>
+        <a-entity position='1.43 -1.86 -1.60' rotation='0 -148 0'>
+            <a-cylinder mixin='log-mixin' position='0 -0.05 0.11' rotation='-66 156 101'></a-cylinder>
+            <a-cylinder mixin='log-mixin' position='0.06 0.04 0' rotation='-60 168 125'></a-cylinder>
+            <a-cylinder mixin='log-mixin' position='0.21 0.11 0.08' rotation='-58 87 140'></a-cylinder>
         </a-entity>
-        <a-entity position='1.95 -1.94 -1.88' rotation='-17 -152 29'>
-            <a-obj-model mixin='log-mixin' src='#log-obj' position='0 -0.05 0' rotation='-66 156 101'></a-obj-model>
-            <a-obj-model mixin='log-mixin' src='#log-obj' position='0.06 0.04 0' rotation='-60 168 125'></a-obj-model>
-            <a-obj-model mixin='log-mixin' src='#log-obj' position='0.3 0.1 -0.1' rotation='-66 87 141'></a-obj-model>
+        <a-entity position='1.5 -1.87 -1.8' rotation='12.6 -6.8 9.17'>
+            <a-cylinder mixin='log-mixin' position='0 -0.05 0.11' rotation='-66 156 101'></a-cylinder>
+            <a-cylinder mixin='log-mixin' position='0.06 0.04 0' rotation='-60 168 125'></a-cylinder>
+            <a-cylinder mixin='log-mixin' position='0.21 0.11 0.08' rotation='-58 87 140'></a-cylinder>
         </a-entity>
 
         <!-- Trees -->

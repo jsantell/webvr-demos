@@ -2,7 +2,6 @@
 
 ### Asset Sources
 
-* [log.obj](http://www.turbosquid.com/FullPreview/Index.cfm/ID/802173)
 * [fireplace.obj](http://www.turbosquid.com/3d-models/free-fireplace-3d-model/983390)
 * [couch.obj](http://www.turbosquid.com/FullPreview/Index.cfm/ID/587657)
 * [tree.obj](http://www.turbosquid.com/FullPreview/Index.cfm/ID/632056)
