@@ -21,11 +21,12 @@
             <audio id='snow-audio' src='assets/snow.ogg' preload='auto' />
             <a-asset-item id='fireplace-obj' src='assets/fireplace.obj' />
             <a-asset-item id='log-obj' src='assets/log.obj' />
+            <a-asset-item id='couch-obj' src='assets/couch.obj' />
             <a-mixin id='wall' scale='2 2 2' material='src: #wood; normalMap: #wood-normal; roughness: 1; metalness: 0, normalScale: 2 2' />
             <a-mixin id='stone-material' material='src: #stone; normalMap: #stone-normal; roughness: 1; metalness: 0, normalScale: 0.5 0.5' />
             <a-mixin id='log-mixin' scale='0.015 0.015 0.015' material='src: #bark; normalMap: #bark-normal; roughness: 1; metalness: 0, normalScale: 1 1' />
         </a-assets>
-        <a-camera position='0 -2 2'>
+        <a-camera wasd-controls-enabled='false' position='0 -2 2'>
             <a-cursor></a-cursor>
         </a-camera>
         <a-sky color="#111"></a-sky>
@@ -117,6 +118,13 @@
             <a-obj-model mixin='log-mixin' src='#log-obj' position='0.3 0.1 -0.1' rotation='-66 87 141'></a-obj-model>
         </a-entity>
 
+        <!-- Couch -->
+        <a-obj-model
+            position='0 -2 2.29'
+            rotation='0 180 0'
+            scale='0.03 0.03 0.03'
+            material='color: #771100; roughness: 1; metalness: 0;' src='#couch-obj'>
+        </a-obj-model>
         <!-- Room -->
         <a-entity position='0 0 0' scale='2 2 2'>
             <!-- Left Wall Pieces -->
