@@ -17,6 +17,8 @@
             <img id='bark' src='assets/bark-diffuse-256.png' />
             <img id='bark-normal' src='assets/bark-normal-256.png' />
             <img id='flame-texture' src='assets/particle.png' />
+            <audio id='fire-audio' src='assets/fire.ogg' preload='auto' />
+            <audio id='snow-audio' src='assets/snow.ogg' preload='auto' />
             <a-asset-item id='fireplace-obj' src='assets/fireplace.obj' />
             <a-asset-item id='log-obj' src='assets/log.obj' />
             <a-mixin id='wall' scale='2 2 2' material='src: #wood; normalMap: #wood-normal; roughness: 1; metalness: 0, normalScale: 2 2' />
@@ -32,6 +34,7 @@
              so use very low values if we want to 'zero' something
              https://github.com/IdeaSpaceVR/aframe-particle-system-component/issues/13 -->
         <a-entity id='snow'
+            sound='src: #snow-audio; autoplay: true; loop: true; volume: 0.2'
             position='-2.74 2 -2.3'
             particle-system='texture: #flame-texture;
             color: #ffffff;
@@ -42,7 +45,7 @@
             accelerationSpread: 0.1 -10 1;
             maxAge: 3;
             size: 0.3;
-            particleCount: 1000;
+            particleCount: 300;
             opacity: 0.3'>
         </a-entity>
 
@@ -83,6 +86,7 @@
                  so use very low values if we want to 'zero' something
                  https://github.com/IdeaSpaceVR/aframe-particle-system-component/issues/13 -->
             <a-entity id='fire'
+                sound='src: #fire-audio; autoplay: true; loop: true; volume: 0.5'
                 position='0 -0.7 -0.2'
                 scale='0.7 0.1 0.1'
                 particle-system='texture: #flame-texture;
@@ -94,7 +98,7 @@
                 accelerationSpread: 0.1 5 1;
                 maxAge: 0.5;
                 size: 0.2;
-                particleCount: 3000;
+                particleCount: 1000;
                 opacity: 0.1'>
             </a-entity>
 
