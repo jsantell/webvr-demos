@@ -11,3 +11,4 @@
 * [stone-normal.png](http://www.textures.com/download/3dscans0077/128145)
 * [bark-diffuse.png](http://www.textures.com/download/3dscans0053/127524)
 * [bark-normal.png](http://www.textures.com/download/3dscans0053/127524)
+* [carpet.png](http://www.textures.com/download/persiancarpets0035/22092)
