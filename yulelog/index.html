@@ -26,6 +26,25 @@
         <a-camera position='0 -2 2'>
             <a-cursor></a-cursor>
         </a-camera>
+        <a-sky color="#111"></a-sky>
+        <!-- Snow -->
+        <!-- Note we must use non zero values in all vec3's otherwise defaults kick in,
+             so use very low values if we want to 'zero' something
+             https://github.com/IdeaSpaceVR/aframe-particle-system-component/issues/13 -->
+        <a-entity id='snow'
+            position='-2.74 2 -2.3'
+            particle-system='texture: #flame-texture;
+            color: #ffffff;
+            positionSpread: 2 2 4;
+            velocityValue: 0.01 -1 0.01;
+            velocitySpread: 0.01 2 0.01;
+            accelerationValue: 0.1 -5 0.1;
+            accelerationSpread: 0.1 -10 1;
+            maxAge: 3;
+            size: 0.3;
+            particleCount: 1000;
+            opacity: 0.3'>
+        </a-entity>
 
         <!-- Fireplace -->
         <a-entity position='0 -1 -1.5'>
@@ -79,6 +98,7 @@
                 opacity: 0.1'>
             </a-entity>
 
+            <!-- Logs -->
             <a-entity position='-0.3 -0.68 -0.3'>
                 <a-obj-model mixin='log-mixin' src='#log-obj' position='0 -0.05 0.11' rotation='-66 156 101'></a-obj-model>
                 <a-obj-model mixin='log-mixin' src='#log-obj' position='0.06 0.04 0' rotation='-60 168 125'></a-obj-model>
@@ -95,7 +115,14 @@
 
         <!-- Room -->
         <a-entity position='0 0 0' scale='2 2 2'>
-            <a-plane mixin='wall' position='-1 0 0' rotation='0 90 0'></a-plane>
+            <!-- Left Wall Pieces -->
+            <a-plane mixin='wall' position='-1 0 1' rotation='0 90 0'></a-plane>
+            <a-plane mixin='wall' position='-1 -1.3 -1' rotation='0 90 0'></a-plane>
+            <!-- Setting scale here should override the mixin, but doesn't, so just apply material manually -->
+            <a-plane position='-1 0.16 -1.65' scale='2 0.92 2' rotation='0 90 0'
+                material='src: #wood; normalMap: #wood-normal; roughness: 1; metalness: 0, normalScale: 2 2'></a-plane>
+            <a-plane mixin='wall' position='-1 1.6 -1' rotation='0 90 0'></a-plane>
+
             <a-plane mixin='wall' position='0 0 1' rotation='0 180 180'></a-plane>
             <a-plane mixin='wall' position='1 0 0' rotation='0 270 0'></a-plane>
             <a-plane mixin='wall' position='0 0 -1' rotation='0 0 0'></a-plane>
