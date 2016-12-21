@@ -22,6 +22,9 @@
             <a-asset-item id='fireplace-obj' src='assets/fireplace.obj' />
             <a-asset-item id='log-obj' src='assets/log.obj' />
             <a-asset-item id='couch-obj' src='assets/couch.obj' />
+            <a-asset-item id='tree-obj' src='assets/tree.obj' />
+
+            <a-mixin id='tree-mixin' rotation='-90 0 0' material='color: #007700; roughness: 1; metalness: 0;' scale='0.02 0.02 0.02'>
             <a-mixin id='wall' scale='2 2 2' material='src: #wood; normalMap: #wood-normal; roughness: 1; metalness: 0, normalScale: 2 2' />
             <a-mixin id='stone-material' material='src: #stone; normalMap: #stone-normal; roughness: 1; metalness: 0, normalScale: 0.5 0.5' />
             <a-mixin id='log-mixin' scale='0.015 0.015 0.015' material='src: #bark; normalMap: #bark-normal; roughness: 1; metalness: 0, normalScale: 1 1' />
@@ -121,6 +124,14 @@
             <a-obj-model mixin='log-mixin' src='#log-obj' position='0 -0.05 0' rotation='-66 156 101'></a-obj-model>
             <a-obj-model mixin='log-mixin' src='#log-obj' position='0.06 0.04 0' rotation='-60 168 125'></a-obj-model>
             <a-obj-model mixin='log-mixin' src='#log-obj' position='0.3 0.1 -0.1' rotation='-66 87 141'></a-obj-model>
+        </a-entity>
+
+        <!-- Trees -->
+        <!-- TODO Why can't `src` inhereit from mixin?? -->
+        <a-entity id='trees' position='-7.5 -1.83 -8.87'>
+            <a-obj-model mixin='tree-mixin' src='#tree-obj'></a-obj-model>
+            <a-obj-model mixin='tree-mixin' src='#tree-obj' position='-1.36 0 1.47'></a-obj-model>
+            <a-light type='spot' color='white' intensity='0.46' decay='0.38' distance='11' position='1.65 3.96 6.78' rotation='0 15.47 0'></a-light>
         </a-entity>
 
         <!-- Couch -->
