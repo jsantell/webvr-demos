@@ -6,7 +6,7 @@ Built with [A-Frame](https://aframe.io).
 
 [Demo Link](https://jsantell.github.io/webvr-demos/yulelog)
 
-![VR Yule Log](img/yulelog.gif)
+![VR Yule Log](../img/yulelog.gif)
 
 ## Asset Sources
 
