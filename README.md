@@ -5,6 +5,7 @@ Some Web VR demos
 ## Demos
 
 * [Yule Log](https://jsantell.github.io/webvr-demos/yulelog)
+* [SciFi Cursor](https://jsantell.github.io/webvr-demos/scifi-cursor)
 
 ## License
 

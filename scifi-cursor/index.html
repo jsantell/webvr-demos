@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sci-Fi Cursor</title>
+    <meta name="description" content="Sci-Fi Cursor"></meta>
+    <script src='../vendor/aframe.min.js'></script>
+    <script src='../vendor/aframe-template-component.min.js'></script>
+    <script src='../vendor/aframe-bmfont-text-component.min.js'></script>
+  </head>
+
+  <body>
+    <a-scene>
+        <a-assets>
+            <img id='reticle-1' src='assets/reticle-circle.png' />
+            <img id='reticle-2' src='assets/reticle-broken-circle.png' />
+            <audio id='blip-audio' src='assets/blip.ogg' preload='auto' />
+            <script id='image-template' type='text/nunjucks'>
+                <!-- Put a plane infront of our visible plane to receive raycasting
+                     since the bmfont text component is rendered infront of our
+                     visible plane, causing all sorts of issues intercepting our raycaster gaze -->
+                <a-plane class='action' height='1' width='1'></a-plane>
+                <a-plane height='1' width='1'
+                    material='shader: flat; color: #222'>
+                    <a-entity
+                        bmfont-text='text: {{title}}; align: center; width: 200; color: #ff9300'
+                        position='-0.485 0.32 0.01'
+                    ></a-entity>
+                ></a-plane>
+            </script>
+        </a-assets>
+        <a-sky color="#111"></a-sky>
+        <a-plane rotation='-90 90 0' color='#333' scale='24 24 24'></a-plane>
+
+        <a-entity position='0 4 -2'>
+            <a-entity template='src: #image-template' data-title='ACTION 1' position='-2 0 0'></a-entity>
+            <a-entity template='src: #image-template' data-title='ACTION 2' position='0 0 0'></a-entity>
+            <a-entity template='src: #image-template' data-title='ACTION 3' position='2 0 0'></a-entity>
+        </a-entity>
+
+        <a-camera position='0 2 0'>
+            <a-plane
+                position='0 0 -1'
+                scale='0.1 0.1 0.1'
+                material='color: white; shader: flat; src: #reticle-2; transparent: true'
+            >
+                <a-animation class='aux-cursor-animation'
+                    begin='cursor-animation-start'
+                    end='cursor-animation-end'
+                    attribute='rotation'
+                    easing='ease-out'
+                    fill='none'
+                    from='0 0 0'
+                    dur='1000'
+                    to='0 0 360'></a-animation>
+                <a-animation class='aux-cursor-animation'
+                    begin='cursor-animation-start'
+                    end='cursor-animation-end'
+                    attribute='opacity'
+                    easing='ease-in-cubic'
+                    fill='none'
+                    from='1'
+                    to='0'
+                    dur='1000'
+                    ></a-animation>
+            </a-plane>
+            <a-plane
+                opacity='0'
+                position='0 0 -1'
+                scale='0.15 0.15 0.15'
+                rotation='0 0 90'
+                material='color: white; shader: flat; src: #reticle-2; transparent: true'
+            >
+                <a-animation class='aux-cursor-animation'
+                    begin='cursor-animation-start'
+                    end='cursor-animation-end'
+                    attribute='rotation'
+                    easing='ease-out'
+                    fill='none'
+                    from='0 0 90'
+                    dur='1000'
+                    to='0 0 -90'></a-animation>
+                <a-animation class='aux-cursor-animation'
+                    begin='cursor-animation-start'
+                    end='cursor-animation-end'
+                    attribute='opacity'
+                    easing='ease-out'
+                    fill='none'
+                    from='0'
+                    to='1'
+                    dur='1000'
+                    ></a-animation>
+            </a-plane>
+            <a-cursor id='cursor'
+                position='0 0 -1'
+                scale='0.02 0.02 0.02'
+                sound='src: #blip-audio; on: click; volume: 0.5'
+                raycaster='objects: .action'
+                geometry='primitive: plane'
+                material='color: white; shader: flat; src: #reticle-1; transparent: true'
+                fuse='true'
+                fuse-timeout='1000'>
+                <a-animation id='main-cursor-animation'
+                    begin='fusing'
+                    end='mouseleave'
+                    attribute='scale'
+                    easing='ease-out'
+                    fill='none'
+                    from='0.02 0.02 0.02'
+                    dur='1000'
+                    to='0.1 0.1 0.1'></a-animation>
+            </a-cursor>
+        </a-camera>
+    </a-scene>
+    <script src='cursor.js'></script>
+  </body>
+</html>
